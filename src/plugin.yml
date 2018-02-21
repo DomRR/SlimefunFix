@@ -1,0 +1,10 @@
+name: SlimefunFix
+main: qwq.sfMain
+version: 1.0
+author: DomRR
+commands:
+ renew:
+  description: Slimefun 更新物品.
+  usage: /<command>
+  permission: slimefunfix.renew
+  permission-message: 你没有 <permission> 权限.
