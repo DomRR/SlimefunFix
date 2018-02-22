@@ -43,9 +43,10 @@ public final class sfMain extends JavaPlugin implements Listener{
                 getLogger().info(prefix + "切换成功: " + debug);
                 return true;
             }
+            if (p.getInventory().getItemInMainHand() == null) return false;
             ItemStack iS = p.getInventory().getItemInMainHand();
             String s = iS.getItemMeta().getDisplayName().toString();
-            if (!(s.contains("§e小背包") || s.contains("§e普通背包") || s.contains("§e大背包") || s.contains("§e编织背包") || s.contains("§e镀金背包") || s.contains("§c灵魂绑定背包") || s.contains("§b小冰柜"))) {
+            if (!(s.contains("§e小背包") || s.contains("§e普通背包") || s.contains("§e大背包") || s.contains("§e编织背包") || s.contains("§e镀金背包") || s.contains("§c灵魂绑定背包") || s.contains("§b小冰柜") || s.contains("§9多功能工具 §7- §eI") || s.contains("§9多功能工具 §7- §eII") || s.contains("§9多功能工具 §7- §eIII") || s.contains("§9多功能工具 §7- §eIV") || s.contains("§9多功能工具 §7- §eV") || s.contains("§9多功能工具 §7- §eVI") || s.contains("§9多功能工具 §7- §eVII"))) {
                 p.sendMessage(prefix + "你的物品不支持更新.");
                 return true;
             }
@@ -63,6 +64,20 @@ public final class sfMain extends JavaPlugin implements Listener{
                 itemUpdate("§c系魂包", p);
             } else if (s.contains("§b小冰柜")) {
                 itemUpdate("§b便携冰袋", p);
+            } else if (s.contains("§9多功能工具 §7- §eI")) {
+                itemUpdate("§9瑞士军刀 §7- §eI", p);
+            } else if (s.contains("§9多功能工具 §7- §eII")) {
+                itemUpdate("§9瑞士军刀 §7- §eII", p);
+            } else if (s.contains("§9多功能工具 §7- §eIII")) {
+                itemUpdate("§9瑞士军刀 §7- §eIII", p);
+            } else if (s.contains("§9多功能工具 §7- §eIV")) {
+                itemUpdate("§9瑞士军刀 §7- §eIV", p);;
+            } else if (s.contains("§9多功能工具 §7- §eV")) {
+                itemUpdate("§9瑞士军刀 §7- §eV", p);
+            } else if (s.contains("§9多功能工具 §7- §eVI")) {
+                itemUpdate("§9瑞士军刀 §7- §eVI", p);
+            } else if (s.contains("§9多功能工具 §7- §eVII")) {
+                itemUpdate("§9瑞士军刀 §7- §eVII", p);
             }
             return true;
         }
@@ -71,6 +86,7 @@ public final class sfMain extends JavaPlugin implements Listener{
     @EventHandler
     public void onBlockPlaceEvent(BlockPlaceEvent e) {
         Player p = e.getPlayer();
+        if (e.getItemInHand() == null || e.getItemInHand().getItemMeta() == null || e.getItemInHand().getItemMeta().getDisplayName() == null) return;
         ItemStack iS = e.getItemInHand();
         String s = iS.getItemMeta().getDisplayName().toString();
         if (debug) getLogger().info(s);
